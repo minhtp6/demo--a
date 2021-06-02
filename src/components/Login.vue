@@ -6,10 +6,10 @@
                 <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" v-model="username" class="input" placeholder="Enter your username" @change="postPost()"> </div>
-                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" v-model="password" class="input" data-type="password" placeholder="Enter your password" @change="postPost()"> </div>
+                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" v-model="form.username" class="input" placeholder="Enter your username"> </div>
+                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" v-model="form.password" class="input" data-type="password" placeholder="Enter your password"> </div>
                             <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
-                            <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
+                            <div class="group"> <input type="submit" class="button" value="Sign In" v-on:click="submit()"> </div>
                             <div class="hr"></div>
                             <div class="foot"> <a href="#">Forgot Password?</a> </div>
                         </div>
@@ -36,18 +36,19 @@ export default {
   name: 'Login',
    data() {
     return {
+        form: {
+                
       username: '',
       password: '',
-      errors: []
-    }
+      
+    }}
 },
- postPost() {
-    axios.post('https://60b7541817d1dc0017b89b0c.mockapi.io/login', {
-        username: this.username,
-        password: this.password
-    });
-  }
-}
+  methods: {
+        submit(){
+            axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form)
+                
+    }
+}}
 
 
 
