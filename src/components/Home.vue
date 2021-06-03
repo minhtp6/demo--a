@@ -1,11 +1,13 @@
 <template>
-<img src="http://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg?w=144"/>
+<div>
+    <h1> aaaa</h1>
+</div>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  
+
 }
 </script>
 

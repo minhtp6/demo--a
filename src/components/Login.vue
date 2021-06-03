@@ -9,7 +9,7 @@
                             <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" v-model="form.username" class="input" placeholder="Enter your username"> </div>
                             <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" v-model="form.password" class="input" data-type="password" placeholder="Enter your password"> </div>
                             <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
-                            <div class="group"> <input type="submit" class="button" value="Sign In" v-on:click="submit()"> </div>
+                            <div class="group"> <input type="submit" class="button" value="Sign In" v-on:click="submit()"></div>
                             <div class="hr"></div>
                             <div class="foot"> <a href="#">Forgot Password?</a> </div>
                         </div>
@@ -32,7 +32,7 @@
 
 <script>
 import axios from 'axios';
-import router from '../router'
+
  
 export default {
   name: 'Login',
@@ -46,11 +46,16 @@ export default {
       
     }}
 },
+// created(){
+//     console.log(this.$router)
+// },
   methods: {
         submit(){
+            let vm= this
             axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form).then(function (response){
                 if(response.status==200){
-                    router.replace({name: 'Home'})
+                   vm.$router.replace({name: 'Home'});
+                    //window.location.assign('/Home');
                 }
             }).catch(function (a){console.error(a);})
                 
