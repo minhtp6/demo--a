@@ -32,8 +32,11 @@
 
 <script>
 import axios from 'axios';
+import router from '../router'
+ 
 export default {
   name: 'Login',
+
    data() {
     return {
         form: {
@@ -45,7 +48,11 @@ export default {
 },
   methods: {
         submit(){
-            axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form)
+            axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form).then(function (response){
+                if(response.status==200){
+                    router.replace({name: 'Home'})
+                }
+            }).catch(function (a){console.error(a);})
                 
     }
 }}
