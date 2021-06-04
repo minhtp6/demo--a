@@ -16,7 +16,7 @@
         }).length
       }}
     </p>
-    <!-- <todo v-for= 'todo in todos' v-bind:key="todo" v-on:deleteTodo="deleteTodo" v-on:completeTodo="completeTodo"> </todo> -->
+    <!-- <todo v-for="todo in todos" v-bind:key="todo"/>  -->
     <div class="card" v-for="todo in todos" v-bind:key="todo">
       <div class="content" v-show="!isEditing">
         <div class="header">
@@ -52,15 +52,11 @@
           </div>
         </div>
       </div>
-      <div
-        class="ui bottom attached green basic button"
-        v-show="!isEditing && todo.done"
-        disabled
-      >
+      <div class="buttonPass" v-show="!isEditing && todo.done" disabled>
         Completed
       </div>
       <div
-        class="ui bottom attached red basic button"
+        class="buttonPending"
         v-on:click="completeTodo(todo)"
         v-show="!isEditing && !todo.done"
       >
@@ -116,6 +112,12 @@ div.card {
   height: 100px;
   padding: 100px;
   border: 1px solid red;
+}
+div.buttonPass {
+  background-color: green;
+}
+div.buttonPending {
+  background-color: orange;
 }
 </style>
 
