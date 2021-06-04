@@ -57,14 +57,11 @@
             </td>
             <td>
           <div class="ui two button attached buttons">
-            <button class="ui basic blue button" v-on:click="hideForm">
+            <button class="okbtn" v-on:click="hideForm">
               Save 
             </button>
           </div>
             </td>
-            <td>
-            </td>
-            <td></td>
           </tr>
         </table>
       
@@ -73,6 +70,7 @@
 </template>
 
 <script type="text/javascript">
+import sweetalert from "sweetalert";
 export default {
   props: ["todo"],
   data() {
@@ -92,6 +90,7 @@ export default {
     },
     hideForm() {
       this.isEditing = false;
+      sweetalert("Success!", "To-Do edited!", "success");
     },
   },
 };
@@ -121,5 +120,8 @@ td {
   height: 50px;
   border: 5px solid black;
   text-align: center;
+}
+button.okbtn{
+  background-color: lawngreen;
 }
 </style>
