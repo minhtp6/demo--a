@@ -3,9 +3,9 @@
     <button class='ui basic button icon' v-on:click="openForm" v-show="!isCreating">
       <i class='plus icon'>+</i>
     </button>
-    <div class='ui centered card' v-show="isCreating">
+    <div class='cardForm' v-show="isCreating">
       <div class='content'>
-        <div class='ui form'>
+        <div class='ui cardform'>
           <div class='field'>
             <label>Title</label>
             <input v-model="titleText" type='text'>
@@ -15,10 +15,10 @@
             <input v-model="projectText" type='text'>
           </div>
           <div class='ui two button attached buttons'>
-            <button class='ui basic blue button' v-on:click="sendForm()">
+            <button class='bluebutton' v-on:click="sendForm()">
               Create
             </button>
-            <button class='ui basic red button' v-on:click="closeForm">
+            <button class='redbutton' v-on:click="closeForm">
               Cancel
             </button>
           </div>
@@ -62,8 +62,15 @@ export default {
 };
 </script>
 <style scope>
-div.ui form{
-  padding: 100px;
-  border: 2px solid blue;
+div.cardForm{
+  padding: auto;
+  width: 300px;
+  border: 2px solid greenyellow;
+}
+button.bluebutton{
+  background-color: lightgreen;
+}
+button.redbutton{
+  background-color: red;
 }
 </style>

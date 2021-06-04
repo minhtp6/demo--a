@@ -8,11 +8,11 @@
           {{ todo.project }}
       </div>
       <div class='extra content'>
-          <span class='right floated edit icon' v-on:click="showForm">
+          <span class='edit' v-on:click="showForm">
           <i class='edit icon'>Edit</i>
         </span>
         <i> // </i>
-        <span class='right floated trash icon' v-on:click="deleteTodo(todo)">
+        <span class='trash' v-on:click="deleteTodo(todo)">
           <i class='trash icon'>Delete</i>
         </span>
       </div>
@@ -71,7 +71,7 @@
 div.cardtodo {
   width: 300px;
   height: 100px;
-  padding: 100px;
+  padding: inherit;
   border: 1px solid red;
 }
 div.buttonPass {
@@ -79,5 +79,13 @@ div.buttonPass {
 }
 div.buttonPending {
   background-color: orange;
+}
+span.edit {
+  border-bottom-color: mediumspringgreen;
+  background-color: mediumspringgreen;
+}
+span.trash{
+  border-bottom-color: firebrick;
+  background-color: firebrick;
 }
 </style>

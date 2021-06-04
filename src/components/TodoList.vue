@@ -91,12 +91,12 @@ export default {
       this.todos[todoIndex].done = true;
       sweetalert("Success!", "To-Do completed!", "success");
     },
-    showForm() {
-      this.isEditing = true;
-    },
-    hideForm() {
-      this.isEditing = false;
-    },
+    // showForm() {
+    //   this.isEditing = true;
+    // },
+    // hideForm() {
+    //   this.isEditing = false;
+    // },
   },
 };
 </script>
