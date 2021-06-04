@@ -3,8 +3,9 @@
     <h1 >Vue.js Todo App</h1>
     <div >
       <div class='column'>
-        <todo-list v-bind:todos="todos"></todo-list>
         <create-todo v-on:create-todo="createTodo"></create-todo>
+        <todo-list v-bind:todos="todos"></todo-list>
+        
       </div>
     </div>
   </div>
@@ -18,8 +19,9 @@ import CreateTodo from './CreateTodo';
 export default {
   name: 'app',
   components: {
-    TodoList,
     CreateTodo,
+    TodoList,
+    
   },
   data() {
     return {

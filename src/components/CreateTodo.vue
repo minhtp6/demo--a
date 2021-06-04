@@ -1,28 +1,39 @@
 <template>
-  <div class='ui basic content center aligned segment'>
-    <button class='ui basic button icon' v-on:click="openForm" v-show="!isCreating">
-      <i class='plus icon'>+</i>
+  <div class="ui basic content center aligned segment">
+    <button
+      class="ui basic button icon"
+      v-on:click="openForm"
+      v-show="!isCreating"
+    >
+      <i class="plus icon">+</i>
     </button>
-    <div class='cardForm' v-show="isCreating">
-      <div class='content'>
-        <div class='ui cardform'>
-          <div class='field'>
-            <label>Title</label>
-            <input v-model="titleText" type='text'>
-          </div>
-          <div class='field'>
-            <label>Project</label>
-            <input v-model="projectText" type='text'>
-          </div>
-          <div class='ui two button attached buttons'>
-            <button class='bluebutton' v-on:click="sendForm()">
-              Create
-            </button>
-            <button class='redbutton' v-on:click="closeForm">
-              Cancel
-            </button>
-          </div>
-        </div>
+    <div v-show="isCreating">
+      <div class="content">
+        <table class="create">
+          <tr class="create">
+            <td class="create">
+              <label>Title</label>
+            </td>
+            <td class="create">
+              <input v-model="titleText" type="text" />
+            </td>
+          </tr>
+          <tr class="create">
+            <td class="create">
+              <label>Project</label>
+            </td>
+            <td class="create">
+              <input v-model="projectText" type="text" />
+            </td>
+          </tr>
+          <tr class="create">
+            <td class="create"></td>
+            <td class="create">
+              <button class="bluebutton" v-on:click="sendForm()">Create</button>
+              <button class="redbutton" v-on:click="closeForm">Cancel</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -32,8 +43,8 @@
 export default {
   data() {
     return {
-      titleText: '',
-      projectText: '',
+      titleText: "",
+      projectText: "",
       isCreating: false,
     };
   },
@@ -48,29 +59,47 @@ export default {
       if (this.titleText.length > 0 && this.projectText.length > 0) {
         const title = this.titleText;
         const project = this.projectText;
-        this.$emit('create-todo', {
+        this.$emit("create-todo", {
           title,
           project,
           done: false,
         });
-        this.titleText = '';
-        this.projectText = '';
+        this.titleText = "";
+        this.projectText = "";
         this.isCreating = false;
       }
     },
   },
 };
 </script>
-<style scope>
-div.cardForm{
+<style>
+div.cardForm {
   padding: auto;
   width: 300px;
   border: 2px solid greenyellow;
 }
-button.bluebutton{
+button.bluebutton {
   background-color: lightgreen;
 }
-button.redbutton{
+button.redbutton {
   background-color: red;
+}
+table.create {
+  width: 50px;
+  height: 5px;
+  border: transparent;
+  text-align: center;
+}
+td.create {
+  width: 50px;
+  height: 5px;
+  border: transparent;
+  text-align: left;
+}
+tr.create {
+  width: 50px;
+  height: 5px;
+  border: transparent;
+  text-align: center;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <a href="/login">Login</a>
     <router-view></router-view>
   </div>
 </template>

@@ -16,6 +16,15 @@
         }).length
       }}
     </p>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Project</th>
+        <th>Status</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </table>
     <todo v-for="todo in todos" :todo="todo" :key="todo" v-on:complete-todo="completeTodo(todo)" v-on:delete-todo="deleteTodo(todo)"/> 
     <!-- <div class="card" v-for="todo in todos" v-bind:key="todo">
       <div class="content" v-show="!isEditing">
@@ -102,9 +111,15 @@ export default {
 </script>
 
 <style>
-p.tasks {
-  text-align: center;
+table{
+  width: 500px;
 }
-
+th {
+  width: 100px;
+  height: 50px;
+  border: 5px solid black;
+  text-align: center;
+  background-color: lightsalmon;
+}
 </style>
 
