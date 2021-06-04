@@ -90,7 +90,7 @@ body {
     max-width: 1920px;
     min-height: 700px;
     position: relative;
-    background: green;
+    background: white;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19)
 }
 
@@ -99,7 +99,7 @@ body {
     height: 100%;
     position: absolute;
     padding: 90px 70px 50px 70px;
-    background: rgba(0, 77, 77, .9)
+    background: thistle
 }
 
 .login-snip .login,
@@ -137,7 +137,7 @@ body {
 
 .login-snip .sign-in:checked+.tab,
 .login-snip .sign-up:checked+.tab {
-    color: #fff;
+    color: whitesmoke;
     border-color: #1161ee
 }
 
@@ -156,7 +156,7 @@ body {
 .login-space .group .input,
 .login-space .group .button {
     width: 100%;
-    color: #fff;
+    color: white;
     display: block
 }
 
@@ -174,12 +174,12 @@ body {
 } */
 
 .login-space .group .label {
-    color: #aaa;
+    color: whitesmoke;
     font-size: 12px
 }
 
 .login-space .group .button {
-    background: #1161ee
+    background: steelblue
 }
 
 .login-space .group label .icon {
@@ -276,6 +276,6 @@ a {
 }
 
 ::placeholder {
-    color: #b3b3b3
+    color: white
 }
 </style>
