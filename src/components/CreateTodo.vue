@@ -1,7 +1,7 @@
 <template>
   <div class='ui basic content center aligned segment'>
     <button class='ui basic button icon' v-on:click="openForm" v-show="!isCreating">
-      <i class='plus icon'></i>
+      <i class='plus icon'>+</i>
     </button>
     <div class='ui centered card' v-show="isCreating">
       <div class='content'>
@@ -61,3 +61,9 @@ export default {
   },
 };
 </script>
+<style scope>
+div.ui form{
+  padding: 100px;
+  border: 2px solid blue;
+}
+</style>
