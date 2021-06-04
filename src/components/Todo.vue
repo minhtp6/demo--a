@@ -1,5 +1,5 @@
 <template>
-  <div class='ui centered card' >
+  <div class='cardtodo' >
     <div class="content" v-show="!isEditing">
       <div class='header'>
           {{ todo.title }}
@@ -9,10 +9,11 @@
       </div>
       <div class='extra content'>
           <span class='right floated edit icon' v-on:click="showForm">
-          <i class='edit icon'></i>
+          <i class='edit icon'>Edit</i>
         </span>
+        <i> // </i>
         <span class='right floated trash icon' v-on:click="deleteTodo(todo)">
-          <i class='trash icon'></i>
+          <i class='trash icon'>Delete</i>
         </span>
       </div>
     </div>
@@ -33,10 +34,10 @@
         </div>
       </div>
     </div>
-    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
+    <div class='buttonPass' v-show="!isEditing &&todo.done" disabled>
         Completed
     </div>
-    <div class='ui bottom attached red basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
+    <div class='buttonPending' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
         Pending
     </div>
   </div>
@@ -54,7 +55,7 @@
       completeTodo(todo) {
         this.$emit('complete-todo', todo);
       },
-      deleteTodo(todo) {
+      deleteTodo(todo) {     
         this.$emit('delete-todo', todo);
       },
       showForm() {
@@ -66,3 +67,17 @@
     },
   };
 </script>
+<style>
+div.cardtodo {
+  width: 300px;
+  height: 100px;
+  padding: 100px;
+  border: 1px solid red;
+}
+div.buttonPass {
+  background-color: green;
+}
+div.buttonPending {
+  background-color: orange;
+}
+</style>

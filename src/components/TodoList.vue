@@ -16,8 +16,8 @@
         }).length
       }}
     </p>
-    <!-- <todo v-for="todo in todos" v-bind:key="todo"/>  -->
-    <div class="card" v-for="todo in todos" v-bind:key="todo">
+    <todo v-for="todo in todos" :todo="todo" :key="todo" v-on:complete-todo="completeTodo(todo)" v-on:delete-todo="deleteTodo(todo)"/> 
+    <!-- <div class="card" v-for="todo in todos" v-bind:key="todo">
       <div class="content" v-show="!isEditing">
         <div class="header">
           {{ todo.title }}
@@ -62,18 +62,18 @@
       >
         Pending
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script type = "text/javascript" >
 import sweetalert from "sweetalert";
-// import Todo from './Todo.vue';
+ import Todo from './Todo.vue';
 
 export default {
   props: ["todos"],
   components: {
-    //  Todo
+    Todo
   },
   data() {
     return {
@@ -84,13 +84,11 @@ export default {
     deleteTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos.splice(todoIndex, 1);
-      this.$emit("delete-todo", todo);
       sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
     },
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = true;
-      this.$emit("complete-todo", todo);
       sweetalert("Success!", "To-Do completed!", "success");
     },
     showForm() {
@@ -103,21 +101,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 p.tasks {
   text-align: center;
 }
-div.card {
-  width: 300px;
-  height: 100px;
-  padding: 100px;
-  border: 1px solid red;
-}
-div.buttonPass {
-  background-color: green;
-}
-div.buttonPending {
-  background-color: orange;
-}
+
 </style>
 
