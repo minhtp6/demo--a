@@ -1,9 +1,10 @@
 <template>
-  <div id="app">
+  <div class="app" id="app">
     <h1 >Vue.js Todo App</h1>
     <div >
       <div class='column'>
-        <create-todo v-on:create-todo="createTodo"></create-todo>
+        <!-- <create-todo v-on:create-todo="createTodo"></create-todo> -->
+        <button v-on:click="showDialog()" v-on:create-todo="createTodo(newTodo)">+</button>
         <todo-list v-bind:todos="todos"></todo-list>
         
       </div>
@@ -19,7 +20,6 @@ import CreateTodo from './CreateTodo';
 export default {
   name: 'app',
   components: {
-    CreateTodo,
     TodoList,
     
   },
@@ -49,6 +49,11 @@ export default {
       this.todos.push(newTodo);
       sweetalert('Success!', 'To-Do created!', 'success');
     },
+    showDialog() {
+      this.$modal.show(CreateTodo);
+    },
   },
 };
 </script>
+<style>
+</style>

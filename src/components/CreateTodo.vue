@@ -1,46 +1,39 @@
 <template>
   <div class="ui basic content center aligned segment">
-    <button
-      class="ui basic button icon"
-      v-on:click="openForm"
-      v-show="!isCreating"
-    >
-      <i class="plus icon">+</i>
-    </button>
-    <div v-show="isCreating">
-      <div class="content">
-        <table class="create">
-          <tr class="create">
-            <td class="create">
-              <label>Title</label>
-            </td>
-            <td class="create">
-              <input v-model="titleText" type="text" />
-            </td>
-          </tr>
-          <tr class="create">
-            <td class="create">
-              <label>Project</label>
-            </td>
-            <td class="create">
-              <input v-model="projectText" type="text" />
-            </td>
-          </tr>
-          <tr class="create">
-            <td class="create"></td>
-            <td class="create">
-              <button class="bluebutton" v-on:click="sendForm()">Create</button>
-              <button class="redbutton" v-on:click="closeForm">Cancel</button>
-            </td>
-          </tr>
-        </table>
-      </div>
+    <div class="content">
+      <table class="create">
+        <tr class="create">
+          <td class="create">
+            <label>Title</label>
+          </td>
+          <td class="create">
+            <input v-model="titleText" type="text" />
+          </td>
+        </tr>
+        <tr class="create">
+          <td class="create">
+            <label>Project</label>
+          </td>
+          <td class="create">
+            <input v-model="projectText" type="text" />
+          </td>
+        </tr>
+        <tr class="create">
+          <td class="create"></td>
+          <td class="create">
+            <button class="bluebutton" v-on:click="sendForm()">Create</button>
+            <button class="redbutton" v-on:click="closeForm">Cancel</button>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
+  props:['todos'],
   data() {
     return {
       titleText: "",
@@ -48,13 +41,8 @@ export default {
       isCreating: false,
     };
   },
+
   methods: {
-    openForm() {
-      this.isCreating = true;
-    },
-    closeForm() {
-      this.isCreating = false;
-    },
     sendForm() {
       if (this.titleText.length > 0 && this.projectText.length > 0) {
         const title = this.titleText;
@@ -67,8 +55,13 @@ export default {
         this.titleText = "";
         this.projectText = "";
         this.isCreating = false;
+      //   todos.push(newTodo);
+      // sweetalert('Success!', 'To-Do created!', 'success');
       }
     },
+    closeForm(){
+      this.$modal.hideAll();
+    }
   },
 };
 </script>

@@ -7,7 +7,12 @@ import Login from './components/Login';
 import VueJSModal from 'vue-js-modal';
 Vue.use(VueRouter)
 Vue.use(Vuex)
-Vue.use(VueJSModal)
+Vue.use(VueJSModal,{
+  dialog: true,
+  dynamicDefaults: {
+    draggable: true
+  }
+})
 const routes = [
     {path:'/', name:'Login' ,component: Login},
     { path: '/Home',name: 'Home' , component: Home}
@@ -21,5 +26,4 @@ const routes = [
 new Vue({
   render: h => h(App),
   router,
-  
 }).$mount('#app')
