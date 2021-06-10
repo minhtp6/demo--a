@@ -1,30 +1,43 @@
 <template>
-  <div>
+  <div class="editTodo">
     <table>
       <tr>
-        <td>
-          <div class="field">
-            <label>title</label>
-            <input type="text" v-model="todo.title" />
-          </div>
-        </td>
-        <td>
-          <div class="field">
-            <label>project</label>
-            <input type="text" v-model="todo.project" />
-          </div>
-        </td>
-        <td>
-          <div class="ui two button attached buttons">
-            <button class="okbtn" v-on:click="hideForm">Save</button>
-          </div>
-        </td>
+      <td>
+        <tr>
+          <label>title</label>
+        </tr>
+      </td>
+      <td>
+        <tr>
+          <input type="text" v-model="todo.title" />
+        </tr>
+      </td>
+      </tr>
+      <tr>
+      <td>
+        <tr>
+          <label>project</label>
+        </tr>
+      </td>
+      <td>
+        <tr>
+          <input type="text" v-model="todo.project" />
+        </tr>
+      </td>
+      </tr>
+      <tr>
+      <td></td>
+      <td>
+        <div class="ui two button attached buttons">
+          <button class="okbtn" v-on:click="hideForm">Save</button>
+        </div>
+      </td>
       </tr>
     </table>
   </div>
 </template>
 <script type="text/javascript">
-import EventBus from './EventBus'
+import EventBus from "./EventBus";
 export default {
   props: ["todo"],
   methods: {
@@ -34,17 +47,12 @@ export default {
         project: this.project,
       };
       EventBus.$emit("hide-form", todo);
-      this.$modal.hideAll()
+      this.$modal.hideAll();
     },
   },
 };
 </script>
 <style>
-table {
-  width: 500px;
-  padding: inherit;
-  border: 0.5px solid red;
-}
 div.buttonPass {
   background-color: green;
 }
@@ -59,13 +67,15 @@ button.trash {
   background-color: firebrick;
   border-radius: 5pt;
 }
-td {
-  width: 100px;
-  height: 50px;
-  border: 0.1px solid black;
-  text-align: center;
-}
 button.okbtn {
   background-color: lawngreen;
+}
+div.editTodo {
+  padding: 130px;
+  margin: auto;
+}
+label {
+  font-weight: bold;
+  font-size: 18;
 }
 </style>

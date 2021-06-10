@@ -93,7 +93,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped module>
 table {
   width: 500px;
   padding: inherit;
@@ -116,7 +116,7 @@ span.trash {
 td {
   width: 100px;
   height: 50px;
-  border: 5px solid black;
+  border: 0.5px solid black;
   text-align: center;
 }
 button.okbtn {
