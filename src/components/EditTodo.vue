@@ -71,8 +71,7 @@ button.okbtn {
   background-color: lawngreen;
 }
 div.editTodo {
-  padding: 130px;
-  margin: auto;
+  padding: 50;
 }
 label {
   font-weight: bold;

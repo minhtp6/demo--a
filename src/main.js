@@ -8,20 +8,26 @@ import VModal from 'vue-js-modal'
 import VueLoading from 'vuejs-loading-plugin'
 Vue.use(VueRouter)
 Vue.use(Vuex)
-Vue.use(VModal)
+Vue.use(VModal, {
+  dynamicDefaults: {
+    adaptive: true,
+    maxHeight: 100,
+    maxWidth: 315
+  }
+})
 Vue.use(VueLoading)
 const routes = [
-    {path:'/', name:'Login' ,component: Login},
-    { path: '/Home',name: 'Home' , component: Home}
-  ];
-  const router = new VueRouter({
-    mode: 'history',
-    routes,
-  });
+  { path: '/', name: 'Login', component: Login },
+  { path: '/Home', name: 'Home', component: Home }
+];
+const router = new VueRouter({
+  mode: 'history',
+  routes,
+});
 
 
 new Vue({
   render: h => h(App),
   router,
-  
+
 }).$mount('#app')
