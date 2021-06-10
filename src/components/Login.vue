@@ -25,6 +25,7 @@
 
 <script>
 import axios from 'axios';
+import LoadingSpinnerVue from './LoadingSpinner.vue';
 
  
 export default {
@@ -49,6 +50,9 @@ export default {
                 if(response.status==200){
                    vm.$router.replace({name: 'Home'});
                     //window.location.assign('/Home');
+                }
+                else if(response.status=='pending'){
+                    this.$modal.show(LoadingSpinnerVue)
                 }
             }).catch(function (a){console.error(a);}).finally(() => {this.loading = false})
                 

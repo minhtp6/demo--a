@@ -1,6 +1,6 @@
 <template>
-  <div class="cardtodo">
-    <div class="content" v-show="!isEditing">
+  <div class="cardtodo" >
+    <div class="content">
       <table>
         <tr>
           <td>
@@ -14,69 +14,71 @@
             </div>
           </td>
           <td>
-            <div class="buttonPass" v-show="!isEditing && todo.done" disabled>
+            <div class="buttonPass" v-show="todo.done" disabled>
               Completed
             </div>
             <div
               class="buttonPending"
               v-on:click="completeTodo(todo)"
-              v-show="!isEditing && !todo.done"
+              v-show="!todo.done"
             >
               Pending
             </div>
           </td>
           <td>
-            <span class="edit" v-on:click="showForm">
+            <button class="edit" v-on:click="showEdit(todo)">
               <i class="edit icon">Edit</i>
-            </span>
+            </button>
           </td>
           <td>
-            <span class="trash" v-on:click="deleteTodo(todo)">
+            <button class="trash" v-on:click="deleteTodo(todo)">
               <i class="trash icon">Delete</i>
-            </span>
+            </button>
           </td>
         </tr>
       </table>
     </div>
 
-    <div class="content" v-show="isEditing">
-      
-        <table>
-          <tr>
-            <td>
-          <div class="field">
-            
-            <input type="text" v-model="todo.title" />
-          </div>
-            </td>
-            <td>
-          <div class="field">
-            
-            <input type="text" v-model="todo.project" />
-          </div>
-            </td>
-            <td>
-          <div class="ui two button attached buttons">
-            <button class="okbtn" v-on:click="hideForm">
-              Save 
-            </button>
-          </div>
-            </td>
-          </tr>
-        </table>
-      
-    </div>
+    <!-- <div class="content" v-show="isEditing">
+      <table>
+        <tr>
+          <td>
+            <div class="field">
+              <input type="text" v-model="todo.title" />
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <input type="text" v-model="todo.project" />
+            </div>
+          </td>
+          <td>
+            <div class="ui two button attached buttons">
+              <button class="okbtn" v-on:click="hideForm">Save</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div> -->
   </div>
 </template>
 
 <script type="text/javascript">
-import sweetalert from "sweetalert";
+import EventBus from './EventBus'
+import sweetalert from 'sweetalert'
+//import EditTodoVue from "./EditTodo.vue";
 export default {
   props: ["todo"],
   data() {
     return {
-      isEditing: false,
+      
     };
+  },
+  created() {
+    
+    EventBus.$on('hide-form',()=>{
+      sweetalert("Success!", "To-Do edited!", "success");
+    });
   },
   methods: {
     completeTodo(todo) {
@@ -85,12 +87,8 @@ export default {
     deleteTodo(todo) {
       this.$emit("delete-todo", todo);
     },
-    showForm() {
-      this.isEditing = true;
-    },
-    hideForm() {
-      this.isEditing = false;
-      sweetalert("Success!", "To-Do edited!", "success");
+    showEdit(todo) {
+      this.$emit("edit-todo", todo);
     },
   },
 };
@@ -121,7 +119,7 @@ td {
   border: 5px solid black;
   text-align: center;
 }
-button.okbtn{
+button.okbtn {
   background-color: lawngreen;
 }
 </style>

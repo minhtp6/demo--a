@@ -4,10 +4,10 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router';
 import Home from './components/Home';
 import Login from './components/Login';
-import VueJSModal from 'vue-js-modal';
+import VModal from 'vue-js-modal'
 Vue.use(VueRouter)
 Vue.use(Vuex)
-Vue.use(VueJSModal)
+Vue.use(VModal)
 const routes = [
     {path:'/', name:'Login' ,component: Login},
     { path: '/Home',name: 'Home' , component: Home}

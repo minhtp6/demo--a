@@ -21,11 +21,19 @@
         <th>Title</th>
         <th>Project</th>
         <th>Status</th>
-        <th> </th>
-        <th> </th>
+        <th></th>
+        <th></th>
       </tr>
     </table>
-    <todo v-for="todo in todos" :todo="todo" :key="todo" v-on:complete-todo="completeTodo(todo)" v-on:delete-todo="deleteTodo(todo)"/> 
+    <todo
+      v-for="(todo,k) of todos"
+      :todo="todo"
+      :key="`${k}k`"
+      v-on:complete-todo="completeTodo(todo)"
+      v-on:delete-todo="deleteTodo(todo)"
+      v-on:edit-todo="editTodo(todo)"
+    />
+    <!-- v-on:edit-todo="editTodo()" -->
     <!-- <div class="card" v-for="todo in todos" v-bind:key="todo">
       <div class="content" v-show="!isEditing">
         <div class="header">
@@ -77,18 +85,19 @@
 
 <script type = "text/javascript" >
 import sweetalert from "sweetalert";
- import Todo from './Todo.vue';
-
+import Todo from "./Todo.vue";
+import EditTodoVue from "./EditTodo.vue";
 export default {
   props: ["todos"],
   components: {
-    Todo
+    Todo,
   },
   data() {
     return {
       isEditing: false,
     };
   },
+ 
   methods: {
     deleteTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
@@ -100,18 +109,16 @@ export default {
       this.todos[todoIndex].done = true;
       sweetalert("Success!", "To-Do completed!", "success");
     },
-    // showForm() {
-    //   this.isEditing = true;
-    // },
-    // hideForm() {
-    //   this.isEditing = false;
-    // },
+    editTodo(todo) {
+        const todoIndex = this.todos.indexOf(todo);
+        this.$modal.show(EditTodoVue, { todo: this.todos[todoIndex] });
+    },
   },
 };
 </script>
 
 <style>
-table{
+table {
   width: 500px;
 }
 th {
