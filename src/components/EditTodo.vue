@@ -34,6 +34,7 @@ export default {
         project: this.project,
       };
       EventBus.$emit("hide-form", todo);
+      this.$modal.hideAll()
     },
   },
 };
