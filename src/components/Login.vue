@@ -54,21 +54,6 @@ export default {
 </script>
 
 <style>
-.loader{
-    position: absolute;
-    top:0px;
-    right:0px;
-    width:100%;
-    height:100%;
-    background-color:#eceaea;
-    background-image: url('../assets/logo.png');
-    background-size: 50px;
-    background-repeat:no-repeat;
-    background-position:center;
-    z-index:10000000;
-    opacity: 0.4;
-    filter: alpha(opacity=40);
-}
 body {
     padding-left: 680px;
     padding-top: 200px;
@@ -84,7 +69,8 @@ body {
     min-height: 700px;
     position: relative;
     background: white;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19)
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+    padding: auto;
 }
 
 .login-snip {
@@ -265,7 +251,7 @@ a {
 
 .card {
     width: 500px;
-    left: 100px
+    /* left: 100px */
 }
 
 ::placeholder {

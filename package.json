@@ -15,6 +15,7 @@
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-loading-overlay": "^4.0.3",
     "vue-modal": "^1.0.2",
+    "vue-mq": "^1.0.1",
     "vue-router": "^3.5.1",
     "vue-simple-spinner": "^1.2.10",
     "vuejs-loading-plugin": "^1.0.51",
