@@ -76,13 +76,6 @@ export default {
 div.cardForm {
   padding: auto;
   width: 300px;
-  border: 2px solid greenyellow;
-}
-button.bluebutton {
-  background-color: lightgreen;
-}
-button.redbutton {
-  background-color: red;
 }
 table.create {
   width: 50px;

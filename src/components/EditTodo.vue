@@ -53,23 +53,10 @@ export default {
 };
 </script>
 <style>
-div.buttonPass {
-  background-color: green;
+button{
+  border-radius: 10px;
 }
-div.buttonPending {
-  background-color: orange;
-}
-button.edit {
-  background-color: mediumspringgreen;
-  border-radius: 5pt;
-}
-button.trash {
-  background-color: firebrick;
-  border-radius: 5pt;
-}
-button.okbtn {
-  background-color: lawngreen;
-}
+
 div.editTodo {
   padding: 50;
 }

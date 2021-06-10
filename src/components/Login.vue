@@ -37,9 +37,11 @@ export default {
       
     }}
 },
+
   methods: {
         submit(){
             let vm= this
+            console.log(this.form.password)
             this.$loading(true)
             axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form).then(function (response){
                 if(response.status==200){
@@ -55,7 +57,7 @@ body {
     padding-left: 680px;
     padding-top: 200px;
     color: #6a6f8c;
-    background: #c8c8c8;
+    background: white;
     font: 600 16px/18px 'Open Sans', sans-serif
 }
 

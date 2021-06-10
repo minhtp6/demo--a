@@ -124,9 +124,9 @@ table {
 th {
   width: 100px;
   height: 50px;
-  border: 5px solid black;
+  border-bottom: 5px solid black;
   text-align: center;
-  background-color: lightsalmon;
+  
 }
 </style>
 

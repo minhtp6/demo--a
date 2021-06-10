@@ -10,6 +10,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "crypto-js": "^4.0.0",
+    "js-md5": "^0.7.3",
+    "md5": "^2.3.0",
     "sweetalert": "^2.1.2",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",
