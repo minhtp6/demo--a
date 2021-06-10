@@ -32,9 +32,8 @@ export default {
       const todo = {
         title: this.title,
         project: this.project,
-        done: false
       };
-      EventBus.$emit("hide-form", todo)
+      EventBus.$emit("hide-form", todo);
     },
   },
 };

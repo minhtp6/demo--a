@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios';
-import LoadingSpinnerVue from './LoadingSpinner.vue';
+
 
  
 export default {
@@ -40,28 +40,17 @@ export default {
       
     }}
 },
-// created(){
-//     console.log(this.$router)
-// },
   methods: {
         submit(){
             let vm= this
+            this.$loading(true)
             axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form).then(function (response){
                 if(response.status==200){
                    vm.$router.replace({name: 'Home'});
-                    //window.location.assign('/Home');
                 }
-                else if(response.status=='pending'){
-                    this.$modal.show(LoadingSpinnerVue)
-                }
-            }).catch(function (a){console.error(a);}).finally(() => {this.loading = false})
-                
+            }).catch(function (a){console.error(a);}).finally(() => {this.$loading(false)})          
     }
 }}
-
-
-
-
 </script>
 
 <style>
