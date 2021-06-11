@@ -12,15 +12,13 @@ Vue.use(Vuex)
 Vue.use(VModal, {
   dynamicDefaults: {
     clickToClose: false,
-    adaptive: true,
-    maxHeight: 200,
-    maxWidth: 550
+    adaptive: true, 
   }
 })
 Vue.use(VueLoading)
 Vue.use(VueSession)
 const routes = [
-  { path: '/', name: 'Login', component: Login },
+  { path: '', name: 'Login', component: Login },
   { path: '/Home', name: 'Home', component: Home }
 ];
 const router = new VueRouter({

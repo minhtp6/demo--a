@@ -6,13 +6,13 @@
                 <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
                     <div class="login-space">
                         <div class="login">
-                            <div class="loader" v-if="loading"></div>
+                            <div class="loader" v-if="$loading"></div>
                             <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" v-model="form.username" class="input" placeholder="Enter your username"> </div>
                             <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" v-model="form.password" class="input" data-type="password" placeholder="Enter your password"> </div>
-                            <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
+                            <!-- <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div> -->
                             <div class="group"> <input type="submit" class="button" value="Sign In" v-on:click="submit()"></div>
                             <div class="hr"></div>
-                            <div class="foot"> <a href="#">Forgot Password?</a> </div>
+                            <!-- <div class="foot"> <a href="#">Forgot Password?</a> </div> -->
                         </div>
                         
                     </div>
@@ -86,7 +86,7 @@ body {
     height: 100%;
     position: absolute;
     padding: 90px 70px 50px 70px;
-    background: thistle
+    background: lightblue
 }
 
 .login-snip .login,
@@ -124,7 +124,7 @@ body {
 
 .login-snip .sign-in:checked+.tab,
 .login-snip .sign-up:checked+.tab {
-    color: whitesmoke;
+    color: black;
     border-color: #1161ee
 }
 
@@ -161,7 +161,7 @@ body {
 } */
 
 .login-space .group .label {
-    color: whitesmoke;
+    color: black;
     font-size: 12px
 }
 

@@ -17,6 +17,15 @@
       }}
     </p>
     <table>
+      <tr>
+        <td scope="col" width="400px">TTILE</td>
+        <td scope="col" width="400px">PROJECT</td>
+        <td scope="col" width="100px">STATUS</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <table>
     <todo
       v-for="(todo,k) of todos"
       :todo="todo"
@@ -47,38 +56,33 @@ export default {
  
   methods: {
     deleteTodo(todo) {
-      const todoIndex = todo.id;
+      let vm= this
+      var todoIndex = todo.id;
       axios.delete('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex).then(function (response){
         if(response.status==200){
           sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
-          window.setTimeout(function(){location.reload()},800);
+          vm.todos.splice(vm.todos.indexOf(todo),1);
         }
       });
      
     },
     completeTodo(todo) {
-      const todoIndex = todo.id;
+      var todoIndex = todo.id;
 
       todo.done = true;
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex,todo).then(function (response){
         if(response.status ==200){
           sweetalert("Success!", "To-Do completed!", "success");
-          window.setTimeout(function(){location.reload()},800);
         }
       })
       
     },
     editTodo(todo) {
-        const todoIndex = this.todos.indexOf(todo);
+        var todoIndex = this.todos.indexOf(todo);
         this.$modal.show(EditTodoVue, { todo: this.todos[todoIndex] });
     },
   },
 };
 </script>
 
-<style>
-table {
-  table-layout: auto;
-}
-</style>
 

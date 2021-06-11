@@ -1,39 +1,13 @@
 <template>
-  <div class="editTodo">
-    <table>
-      <tr>
-      <td>
-        <tr>
-          <label>title</label>
-        </tr>
-      </td>
-      <td>
-        <tr>
-          <input type="text" v-model="todo.title" maxlength="50"/>
-        </tr>
-      </td>
-      </tr>
-      <tr>
-      <td>
-        <tr>
-          <label>project</label>
-        </tr>
-      </td>
-      <td>
-        <tr>
-          <input type="text" v-model="todo.project" maxlength="50"/>
-        </tr>
-      </td>
-      </tr>
-      <tr>
-      <td></td>
-      <td>
-        <div class="ui two button attached buttons">
-          <button class="okbtn" v-on:click="hideForm">Save</button>
-        </div>
-      </td>
-      </tr>
-    </table>
+  <div>   
+          <label><h3>Title:</h3> </label>
+          <input type="text" v-model="todo.title" maxlength="40"/>
+          <br>
+          <label><h3>Project:</h3> </label>
+          <input type="text" v-model="todo.project" maxlength="40"/>
+          <br>
+          <br>
+          <button v-on:click="hideForm">Save</button>
   </div>
 </template>
 <script type="text/javascript">
@@ -59,11 +33,23 @@ export default {
 </script>
 <style scoped module>
 button{
-  border-radius: 10px;
+  padding-left: 225px;
+  margin: auto;
+  margin-top: 5px;
+  background-color: skyblue;
+  color: white;
+  padding-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 175px;
+  margin-bottom:10px;
+  opacity: 0.8;
 }
-
-div.editTodo {
-  padding: 50;
+div{
+  padding-top: 30px;
+  padding-left: 225px;
+  margin: auto;
 }
 label {
   font-weight: bold;

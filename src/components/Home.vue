@@ -1,27 +1,25 @@
 <template>
   <div id="app">
-    <h1 >Vue.js Todo App</h1>
-    <div >
-      <div class='column'>
-        <create-todo v-on:create-todo="createTodo"></create-todo>
+    <h1>Vue.js Todo App</h1>
+    <div>
+      <div class="column">
+        <button v-on:click="createTodo()">
+          <i>+</i>
+        </button>
         <todo-list v-bind:todos="todos"></todo-list>
-        
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import sweetalert from 'sweetalert';
-import TodoList from './TodoList';
-import CreateTodo from './CreateTodo';
-import axios from 'axios';
+import TodoList from "./TodoList";
+import CreateTodo from "./CreateTodo";
+import axios from "axios";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    CreateTodo,
     TodoList,
-    
   },
   data() {
     return {
@@ -29,24 +27,19 @@ export default {
     };
   },
   mounted() {
-    axios.get('https://60c2b23a917002001739d615.mockapi.io/todos').then(reponse =>(this.todos = reponse.data)).bind(this);
-    
+     axios
+      .get("https://60c2b23a917002001739d615.mockapi.io/todos")
+      .then((reponse) => (this.todos = reponse.data));
+
   },
-  ready(){
-    this.updateTodos;
+  created(){
+    axios
+      .get("https://60c2b23a917002001739d615.mockapi.io/todos")
+      .then((reponse) => (this.todos = reponse.data));
   },
   methods: {
-    createTodo(newTodo) {
-      // this.todos.push(newTodo);
-      axios.post('https://60c2b23a917002001739d615.mockapi.io/todos',newTodo).then(function (response){
-        if(response.status == 201){
-          sweetalert('Success!', 'To-Do created!', 'success');
-          window.setTimeout(function(){location.reload()},800);
-        }
-      });
-      
-      
-     
+    createTodo() {
+      this.$modal.show(CreateTodo,{todos:this.todos});
     },
   },
 };

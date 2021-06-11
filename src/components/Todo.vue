@@ -8,14 +8,14 @@
         <td scope="col" width="400px">
           {{ todo.project }}
         </td>
-        <td scope="col" width="150px">
-          <div v-show="todo.done" disabled>Completed</div>
-          <div
+        <td scope="col" width="100px">
+          <button v-show="todo.done" style="color: green" disabled>Completed</button>
+          <button
             v-on:click="completeTodo(todo)"
             v-show="!todo.done"
           >
             Pending
-          </div>
+          </button>
         </td>
         <td scope="col" width="100px">
           <button v-on:click="showEdit(todo)">
