@@ -9,7 +9,7 @@
       </td>
       <td>
         <tr>
-          <textarea type="text" v-model="todo.title" />
+          <textarea type="text" v-model="todo.title" maxlength="40"/>
         </tr>
       </td>
       </tr>
@@ -21,7 +21,7 @@
       </td>
       <td>
         <tr>
-          <textarea type="text" v-model="todo.project" />
+          <textarea type="text" v-model="todo.project" maxlength="40"/>
         </tr>
       </td>
       </tr>

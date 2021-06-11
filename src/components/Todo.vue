@@ -2,13 +2,13 @@
   <div style="overflow-x: auto">
     
       <tr>
-        <td>
+        <td scope="col" width="400px">
           {{ todo.title }}
         </td>
-        <td>
+        <td scope="col" width="400px">
           {{ todo.project }}
         </td>
-        <td >
+        <td scope="col" width="150px">
           <div v-show="todo.done" disabled>Completed</div>
           <div
             v-on:click="completeTodo(todo)"
@@ -17,12 +17,12 @@
             Pending
           </div>
         </td>
-        <td class="button">
+        <td scope="col" width="100px">
           <button v-on:click="showEdit(todo)">
             <i>Edit</i>
           </button>
         </td>
-        <td class="button">
+        <td scope="col" width="100px">
           <button v-on:click="deleteTodo(todo)">
             <i>Delete</i>
           </button>
@@ -53,14 +53,8 @@ export default {
 </script>
 <style scoped module>
 td {
-  width: 300px;
-  max-width: 300px;
-  text-overflow: inherit;
-  text-rendering: auto;
   text-align: left;
-  vertical-align: middle;
   border: 1px dotted grey;
-  table-layout: fixed;
 }
 button {
   text-align:center;

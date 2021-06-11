@@ -15,7 +15,7 @@
               <label>Title</label>
             </td>
             <td class="create">
-              <input v-model="titleText" type="text" />
+              <input v-model="titleText" type="text" maxlength="40" />
             </td>
           </tr>
           <tr class="create">
@@ -23,7 +23,7 @@
               <label>Project</label>
             </td>
             <td class="create">
-              <input v-model="projectText" type="text" />
+              <input v-model="projectText" type="text" maxlength="40"/>
             </td>
           </tr>
           <tr class="create">

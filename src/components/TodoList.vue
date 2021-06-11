@@ -78,7 +78,6 @@ export default {
 
 <style>
 table {
-  max-width: 900px;
   table-layout: auto;
 }
 </style>
