@@ -8,10 +8,9 @@
         <td>
           {{ todo.project }}
         </td>
-        <td class="status">
-          <div class="buttonPass" v-show="todo.done" disabled>Completed</div>
+        <td >
+          <div v-show="todo.done" disabled>Completed</div>
           <div
-            class="buttonPending"
             v-on:click="completeTodo(todo)"
             v-show="!todo.done"
           >
@@ -19,12 +18,12 @@
           </div>
         </td>
         <td class="button">
-          <button class="edit" v-on:click="showEdit(todo)">
+          <button v-on:click="showEdit(todo)">
             <i>Edit</i>
           </button>
         </td>
         <td class="button">
-          <button class="trash" v-on:click="deleteTodo(todo)">
+          <button v-on:click="deleteTodo(todo)">
             <i>Delete</i>
           </button>
         </td>
@@ -53,23 +52,20 @@ export default {
 };
 </script>
 <style scoped module>
-
 td {
-  padding: 10px;
-  width: 400px;
-  height: 100px;
-  vertical-align: middle;
+  width: 300px;
+  max-width: 300px;
   text-overflow: inherit;
+  text-rendering: auto;
+  text-align: left;
+  vertical-align: middle;
   border: 1px dotted grey;
+  table-layout: fixed;
 }
-.td.status {
-  text-align: center;
-  padding: 10px;
-  max-width: 75px;
-}
-.td.button {
+button {
   text-align:center;
   padding: 10px;
-  width: 50px;
+  width: 100px;
+  border-radius: 10px;
 }
 </style>

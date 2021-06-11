@@ -54,7 +54,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped module>
 button{
   border-radius: 10px;
 }

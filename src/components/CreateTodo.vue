@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     openForm() {
+      console.log(this.$session.getAll())
       this.isCreating = true;
     },
     closeForm() {

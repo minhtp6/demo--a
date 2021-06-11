@@ -51,12 +51,3 @@ export default {
   },
 };
 </script>
-<style scoped module>
-body{
-    padding-left: 300px;
-    padding-top: 200px;
-    color: #6a6f8c;
-    background: white;
-    font: 600 16px/18px 'Open Sans', sans-serif
-}
-</style>

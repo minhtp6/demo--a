@@ -45,6 +45,8 @@ export default {
             this.$loading(true)
             axios.post('https://60c2b23a917002001739d615.mockapi.io/users', this.form).then(function (response){
                 if(response.status==201){
+                vm.$session.start();
+                vm.$session.set('jwt', response.status)
                    vm.$router.replace({name: 'Home'});
                 }
             }).catch(function (a){console.error(a);}).finally(() => {this.$loading(false)})          
@@ -54,7 +56,7 @@ export default {
 
 <style>
 body {
-    padding-left:auto;
+    padding-left:300px;
     padding-top: 200px;
     color: black;
     background: url('https://img.wallpapersafari.com/desktop/1920/1080/7/5/xqilPm.png');

@@ -8,6 +8,14 @@
 export default {
   name: "App",
   
+ beforeCreate: function(){
+    if (!this.$session.exists()) {
+      this.$router.replace('/')
+    }
+    else{
+      this.$router.replace('/Home')
+    }
+  },
 };
 </script>
 
