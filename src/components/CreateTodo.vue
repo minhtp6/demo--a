@@ -15,7 +15,7 @@
               <label>Title</label>
             </td>
             <td class="create">
-              <input v-model="titleText" type="text" maxlength="40" />
+              <input v-model="titleText" type="text" maxlength="50" />
             </td>
           </tr>
           <tr class="create">
@@ -23,7 +23,7 @@
               <label>Project</label>
             </td>
             <td class="create">
-              <input v-model="projectText" type="text" maxlength="40"/>
+              <input v-model="projectText" type="text" maxlength="50"/>
             </td>
           </tr>
           <tr class="create">
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import sweetalert from 'sweetalert';
 export default {
   data() {
     return {
@@ -57,7 +58,10 @@ export default {
       this.isCreating = false;
     },
     sendForm() {
-      if (this.titleText.length > 0 && this.projectText.length > 0) {
+      if (this.titleText.length == 0 && this.projectText.length == 0) {
+        sweetalert("Error!", "Title and project can't be empty!!!", "error");
+      }
+      else{
         const title = this.titleText;
         const project = this.projectText;
         this.$emit("create-todo", {

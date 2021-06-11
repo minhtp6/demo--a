@@ -9,7 +9,7 @@
       </td>
       <td>
         <tr>
-          <textarea type="text" v-model="todo.title" maxlength="40"/>
+          <input type="text" v-model="todo.title" maxlength="50"/>
         </tr>
       </td>
       </tr>
@@ -21,7 +21,7 @@
       </td>
       <td>
         <tr>
-          <textarea type="text" v-model="todo.project" maxlength="40"/>
+          <input type="text" v-model="todo.project" maxlength="50"/>
         </tr>
       </td>
       </tr>
@@ -44,12 +44,15 @@ export default {
   props: ["todo"],
   methods: {
     hideForm() {
+      if(this.todo.title==''||this.todo.project==''){
+        sweetalert("Error!", "Title and project can't be empty!!!", "error");
+      }else{
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' + this.todo.id,this.todo).then(function (respone){
         if(respone.status ==200){
           sweetalert("Success!", "To-Do edited!", "success");
         }
       }).finally(() =>this.$modal.hideAll());
-      
+      }
     },
   },
 };
