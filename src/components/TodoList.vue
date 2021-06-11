@@ -17,14 +17,6 @@
       }}
     </p>
     <table>
-      <tr>
-        <th>Title</th>
-        <th>Project</th>
-        <th>Status</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </table>
     <todo
       v-for="(todo,k) of todos"
       :todo="todo"
@@ -33,6 +25,7 @@
       v-on:delete-todo="deleteTodo(todo)"
       v-on:edit-todo="editTodo(todo)"
     />
+    </table>
     <!-- v-on:edit-todo="editTodo()" -->
     <!-- <div class="card" v-for="todo in todos" v-bind:key="todo">
       <div class="content" v-show="!isEditing">
@@ -87,6 +80,7 @@
 import sweetalert from "sweetalert";
 import Todo from "./Todo.vue";
 import EditTodoVue from "./EditTodo.vue";
+import axios from 'axios';
 export default {
   props: ["todos"],
   components: {
@@ -94,20 +88,32 @@ export default {
   },
   data() {
     return {
-      isEditing: false,
+      
     };
   },
  
   methods: {
     deleteTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo);
-      this.todos.splice(todoIndex, 1);
-      sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
+      const todoIndex = todo.id;
+      axios.delete('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex).then(function (response){
+        if(response.status==200){
+          sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
+          window.setTimeout(function(){location.reload()},800);
+        }
+      });
+     
     },
     completeTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo);
-      this.todos[todoIndex].done = true;
-      sweetalert("Success!", "To-Do completed!", "success");
+      const todoIndex = todo.id;
+
+      todo.done = true;
+      axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex,todo).then(function (response){
+        if(response.status ==200){
+          sweetalert("Success!", "To-Do completed!", "success");
+          window.setTimeout(function(){location.reload()},800);
+        }
+      })
+      
     },
     editTodo(todo) {
         const todoIndex = this.todos.indexOf(todo);
@@ -119,14 +125,7 @@ export default {
 
 <style>
 table {
-  width: 500px;
-}
-th {
-  width: 100px;
-  height: 50px;
-  border-bottom: 5px solid black;
-  text-align: center;
-  
+  width: 1250px;
 }
 </style>
 

@@ -43,8 +43,8 @@ export default {
             let vm= this
             console.log(this.form.password)
             this.$loading(true)
-            axios.post('https://datnxeoffice.azurewebsites.net/api/admins/login', this.form).then(function (response){
-                if(response.status==200){
+            axios.post('https://60c2b23a917002001739d615.mockapi.io/users', this.form).then(function (response){
+                if(response.status==201){
                    vm.$router.replace({name: 'Home'});
                 }
             }).catch(function (a){console.error(a);}).finally(() => {this.$loading(false)})          
@@ -54,10 +54,10 @@ export default {
 
 <style>
 body {
-    padding-left: 680px;
+    padding-left:auto;
     padding-top: 200px;
-    color: #6a6f8c;
-    background: white;
+    color: black;
+    background: url('https://img.wallpapersafari.com/desktop/1920/1080/7/5/xqilPm.png');
     font: 600 16px/18px 'Open Sans', sans-serif
 }
 

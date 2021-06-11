@@ -9,7 +9,7 @@
       </td>
       <td>
         <tr>
-          <input type="text" v-model="todo.title" />
+          <textarea type="text" v-model="todo.title" />
         </tr>
       </td>
       </tr>
@@ -21,7 +21,7 @@
       </td>
       <td>
         <tr>
-          <input type="text" v-model="todo.project" />
+          <textarea type="text" v-model="todo.project" />
         </tr>
       </td>
       </tr>
@@ -37,17 +37,19 @@
   </div>
 </template>
 <script type="text/javascript">
-import EventBus from "./EventBus";
+
+import axios from 'axios';
+import sweetalert from 'sweetalert';
 export default {
   props: ["todo"],
   methods: {
     hideForm() {
-      const todo = {
-        title: this.title,
-        project: this.project,
-      };
-      EventBus.$emit("hide-form", todo);
-      this.$modal.hideAll();
+      axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' + this.todo.id,this.todo).then(function (respone){
+        if(respone.status ==200){
+          sweetalert("Success!", "To-Do edited!", "success");
+        }
+      }).finally(() =>this.$modal.hideAll());
+      
     },
   },
 };

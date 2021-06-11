@@ -12,8 +12,8 @@ Vue.use(Vuex)
 Vue.use(VModal, {
   dynamicDefaults: {
     adaptive: true,
-    maxHeight: 100,
-    maxWidth: 315
+    maxHeight: 200,
+    maxWidth: 550
   }
 })
 Vue.use(VueLoading)

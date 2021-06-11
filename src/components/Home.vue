@@ -15,7 +15,7 @@
 import sweetalert from 'sweetalert';
 import TodoList from './TodoList';
 import CreateTodo from './CreateTodo';
-
+import axios from 'axios';
 export default {
   name: 'app',
   components: {
@@ -25,30 +25,38 @@ export default {
   },
   data() {
     return {
-      todos: [{
-        title: 'Todo A',
-        project: 'Project A',
-        done: false,
-      }, {
-        title: 'Todo B',
-        project: 'Project B',
-        done: true,
-      }, {
-        title: 'Todo C',
-        project: 'Project C',
-        done: false,
-      }, {
-        title: 'Todo D',
-        project: 'Project D',
-        done: false,
-      }],
+      todos: null,
     };
+  },
+  mounted() {
+    axios.get('https://60c2b23a917002001739d615.mockapi.io/todos').then(reponse =>(this.todos = reponse.data)).bind(this);
+    
+  },
+  ready(){
+    this.updateTodos;
   },
   methods: {
     createTodo(newTodo) {
-      this.todos.push(newTodo);
-      sweetalert('Success!', 'To-Do created!', 'success');
+      // this.todos.push(newTodo);
+      axios.post('https://60c2b23a917002001739d615.mockapi.io/todos',newTodo).then(function (response){
+        if(response.status == 201){
+          sweetalert('Success!', 'To-Do created!', 'success');
+          window.setTimeout(function(){location.reload()},800);
+        }
+      });
+      
+      
+     
     },
   },
 };
 </script>
+<style scoped module>
+body{
+    padding-left: 300px;
+    padding-top: 200px;
+    color: #6a6f8c;
+    background: white;
+    font: 600 16px/18px 'Open Sans', sans-serif
+}
+</style>
