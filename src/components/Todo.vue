@@ -11,7 +11,7 @@
         <button v-show="todo.done" style="color: green" disabled>
           Completed
         </button>
-        <button v-on:click="completeTodo(todo)" v-show="!todo.done">
+        <button v-on:click="completeTodo(todo)" style="color: red" v-show="!todo.done">
           Pending
         </button>
       </td>
@@ -58,5 +58,6 @@ button {
   padding: 10px;
   width: 100px;
   border-radius: 10px;
+  border: 0.5px solid;
 }
 </style>

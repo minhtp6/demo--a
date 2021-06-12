@@ -1,11 +1,16 @@
 <template>
   <div id="app">
     <h1>Vue.js Todo App</h1>
+
     <div>
       <div class="column">
         <button v-on:click="createTodo()">
           <i>+</i>
         </button>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <button v-on:click="logout()">Logout</button>
         <todo-list v-bind:todos="todos"></todo-list>
       </div>
     </div>
@@ -48,6 +53,20 @@ export default {
     createTodo() {
       this.$modal.show(CreateTodo, { todos: this.todos });
     },
+    logout() {
+      let vm = this;
+      vm.$session.destroy();
+      location.reload();
+    },
   },
 };
 </script>
+<style scoped module>
+button {
+  text-align: center;
+  padding: 10px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+}
+</style>
