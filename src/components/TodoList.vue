@@ -68,7 +68,6 @@ export default {
     },
     completeTodo(todo) {
       var todoIndex = todo.id;
-
       todo.done = true;
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex,todo).then(function (response){
         if(response.status ==200){

@@ -49,7 +49,6 @@ export default {
          }).then(function (response){
         if(response.status == 201){
           sweetalert('Success!', 'To-Do created!', 'success');
-          console.log(vm.todos);
           vm.todos.push({
            title,
            project,
