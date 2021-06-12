@@ -8,7 +8,7 @@
               <br>
               <button style="color: green"  v-on:click="sendForm()">Create</button>
               <br>
-              <button style="color: red"  v-on:click="closeForm">Cancel</button>
+              <button style="color: red"  v-on:click="closeForm">Close</button>
            
       </div>
     
@@ -43,6 +43,7 @@ export default {
         const project = this.projectText;
         this.titleText = "";
         this.projectText = "";
+        vm.$modal.hideAll();
          axios.post('https://60c2b23a917002001739d615.mockapi.io/todos',{
            title,
            project,
@@ -54,9 +55,12 @@ export default {
            project,
            done:false,
          });
-          vm.$modal.hideAll();
+          
           sweetalert('Success!', 'To-Do created!', 'success');
           
+        }
+        else{
+          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
         }
       }).finally(() => {this.$loading(false)});
       }

@@ -16,6 +16,7 @@
 import TodoList from "./TodoList";
 import CreateTodo from "./CreateTodo";
 import axios from "axios";
+import sweetalert from "sweetalert";
 export default {
   name: "app",
   components: {
@@ -27,19 +28,26 @@ export default {
     };
   },
   mounted() {
-     axios
-      .get("https://60c2b23a917002001739d615.mockapi.io/todos")
-      .then((reponse) => (this.todos = reponse.data));
-
-  },
-  created(){
+    let vm =this
     axios
       .get("https://60c2b23a917002001739d615.mockapi.io/todos")
-      .then((reponse) => (this.todos = reponse.data));
+      .then(function (reponse) {
+        if (reponse.status == 200) {
+          vm.todos = reponse.data;
+        }
+        else{
+          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
+        }
+      });
   },
+  // created(){
+  //   axios
+  //     .get("https://60c2b23a917002001739d615.mockapi.io/todos")
+  //     .then((reponse) => (this.todos = reponse.data));
+  // },
   methods: {
     createTodo() {
-      this.$modal.show(CreateTodo,{todos:this.todos});
+      this.$modal.show(CreateTodo, { todos: this.todos });
     },
   },
 };

@@ -23,10 +23,14 @@ export default {
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
       }else{
       vm.$loading(true)
+      vm.$modal.hideAll();
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' + this.todo.id,this.todo).then(function (respone){
         if(respone.status ==200){
-          vm.$modal.hideAll();
+          
           sweetalert("Success!", "To-Do edited!", "success");
+        }
+        else{
+          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
         }
       }).finally(() => {this.$loading(false)});
       }

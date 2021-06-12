@@ -64,6 +64,9 @@ export default {
           sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
           vm.todos.splice(vm.todos.indexOf(todo),1);
         }
+        else{
+          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
+        }
       }).finally(() => {this.$loading(false)});
      
     },
@@ -75,6 +78,9 @@ export default {
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' +todoIndex,todo).then(function (response){
         if(response.status ==200){
           sweetalert("Success!", "To-Do completed!", "success");
+        }
+        else{
+          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
         }
       }).finally(() => {this.$loading(false)});
       
