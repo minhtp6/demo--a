@@ -71,15 +71,13 @@ export default {
         )
         .then(function (response) {
           if (response.status == 200) {
+            vm.$loading(false)
             sweetalert("Deleted!", "Your To-Do has been deleted.", "success");
             vm.todos.splice(vm.todos.indexOf(todo), 1);
           } else {
             sweetalert("Failed!", "Can Not Connect To Server!", "error");
           }
         })
-        .finally(() => {
-          this.$loading(false);
-        });
     },
     completeTodo(todo) {
       let vm = this;
@@ -93,14 +91,12 @@ export default {
         )
         .then(function (response) {
           if (response.status == 200) {
+            vm.$loading(false)
             sweetalert("Success!", "To-Do completed!", "success");
           } else {
             sweetalert("Failed!", "Can Not Connect To Server!", "error");
           }
         })
-        .finally(() => {
-          this.$loading(false);
-        });
     },
     editTodo(todo) {
       var todoIndex = this.todos.indexOf(todo);

@@ -87,6 +87,7 @@ export default {
           .post("https://60c2b23a917002001739d615.mockapi.io/users", this.form)
           .then(function (response) {
             if (response.status == 201) {
+                vm.$loading(false)
               vm.$session.start();
               vm.$session.set("jwt", response.status);
               vm.$router.replace({ name: "Home" });
@@ -97,9 +98,6 @@ export default {
           .catch(function (a) {
             console.error(a);
           })
-          .finally(() => {
-            this.$loading(false);
-          });
       }
     },
   },
