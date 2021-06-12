@@ -64,7 +64,7 @@ export default {
 <style>
 body {
     padding-left:300px;
-    padding-top: 200px;
+    padding-top: 100px;
     color: black;
     background: url('https://img.wallpapersafari.com/desktop/1920/1080/7/5/xqilPm.png');
     font: 600 16px/18px 'Open Sans', sans-serif
