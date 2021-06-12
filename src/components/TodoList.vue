@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="tasks">
+    <p class="tasks" v-if="checkNull()">
       Completed Tasks:
       {{
         todos.filter((todo) => {
@@ -8,7 +8,7 @@
         }).length
       }}
     </p>
-    <p class="tasks">
+    <p class="tasks" v-if="checkNull()">
       Pending Tasks:
       {{
         todos.filter((todo) => {
@@ -53,6 +53,14 @@ export default {
   },
 
   methods: {
+    checkNull(){
+      let vm =this
+      if(vm.todos == null){
+        return false;
+      }else{
+        return true;
+      }
+    },
     deleteTodo(todo) {
       let vm = this;
       vm.$loading(true);

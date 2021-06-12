@@ -34,6 +34,7 @@ export default {
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
       } else {
         vm.$loading(true);
+        const id = vm.todos[vm.todos.length-1].id++;
         const title = this.titleText;
         const project = this.projectText;
         this.titleText = "";
@@ -41,6 +42,7 @@ export default {
         vm.$modal.hideAll();
         axios
           .post("https://60c2b23a917002001739d615.mockapi.io/todos", {
+            id,
             title,
             project,
             done: false,
@@ -48,6 +50,7 @@ export default {
           .then(function (response) {
             if (response.status == 201) {
               vm.todos.push({
+                id,
                 title,
                 project,
                 done: false,

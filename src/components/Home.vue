@@ -4,13 +4,13 @@
 
     <div>
       <div class="column">
-        <button v-on:click="createTodo()">
+        <button v-on:click="createTodo()" style="color: green">
           <i>+</i>
         </button>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button v-on:click="logout()">Logout</button>
+        <button v-on:click="logout()" style="color: steelblue">Logout</button>
         <todo-list v-bind:todos="todos"></todo-list>
       </div>
     </div>
@@ -44,11 +44,6 @@ export default {
         }
       });
   },
-  // created(){
-  //   axios
-  //     .get("https://60c2b23a917002001739d615.mockapi.io/todos")
-  //     .then((reponse) => (this.todos = reponse.data));
-  // },
   methods: {
     createTodo() {
       this.$modal.show(CreateTodo, { todos: this.todos });
@@ -67,6 +62,6 @@ button {
   padding: 10px;
   width: 100px;
   border-radius: 10px;
-  border: none;
+  border: 0.5px dotted;
 }
 </style>
