@@ -1,6 +1,6 @@
 <template>
   
-      <div>
+      <div>   
               <label><h3>Title: </h3></label>
               <input v-model="titleText" type="text" maxlength="50" />
               <label><h3>Project: </h3></label>
@@ -38,6 +38,7 @@ export default {
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
       }
       else{
+        vm.$loading(true)
         const title = this.titleText;
         const project = this.projectText;
         this.titleText = "";
@@ -48,14 +49,16 @@ export default {
            done:false,
          }).then(function (response){
         if(response.status == 201){
-          sweetalert('Success!', 'To-Do created!', 'success');
           vm.todos.push({
            title,
            project,
            done:false,
          });
+          vm.$modal.hideAll();
+          sweetalert('Success!', 'To-Do created!', 'success');
+          
         }
-      }).finally(() =>this.$modal.hideAll());
+      }).finally(() => {this.$loading(false)});
       }
     },
   },

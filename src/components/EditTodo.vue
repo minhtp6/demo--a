@@ -22,12 +22,13 @@ export default {
       if(this.todo.title==''||this.todo.project==''){
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
       }else{
+      vm.$loading(true)
       axios.put('https://60c2b23a917002001739d615.mockapi.io/todos/' + this.todo.id,this.todo).then(function (respone){
         if(respone.status ==200){
           vm.$modal.hideAll();
           sweetalert("Success!", "To-Do edited!", "success");
         }
-      });
+      }).finally(() => {this.$loading(false)});
       }
     },
   },
