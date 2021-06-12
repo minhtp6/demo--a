@@ -32,12 +32,14 @@ export default {
     sendForm() {
       let vm = this;
       if (this.titleText.length == 0 || this.projectText.length == 0) {
+        this.titleText = "";
+        this.projectText = "";
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
       } else {
-        const title = this.titleText;
-        const project = this.projectText;
-        // this.titleText = "";
-        // this.projectText = "";
+        var title = this.titleText;
+        var project = this.projectText;
+        this.titleText = "";
+        this.projectText = "";
         if (vm.todos.length == 0) {
            vm.$loading(true);
           vm.$modal.hideAll();

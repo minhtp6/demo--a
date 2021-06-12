@@ -7,10 +7,7 @@
         <button v-on:click="createTodo()" style="color: green">
           <i>+</i>
         </button>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button v-on:click="logout()" style="color: steelblue">Logout</button>
+        <button class="logout" v-on:click="logout()" style="color: steelblue">Logout</button>
         <todo-list v-bind:todos="todos"></todo-list>
       </div>
     </div>
@@ -56,12 +53,15 @@ export default {
   },
 };
 </script>
-<style scoped module>
+<style scoped lang='css'>
 button {
   text-align: center;
   padding: 10px;
   width: 100px;
   border-radius: 10px;
   border: 0.5px dotted;
+}
+.logout{
+  float: right ;
 }
 </style>

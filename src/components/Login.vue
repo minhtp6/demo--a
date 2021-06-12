@@ -106,8 +106,11 @@ export default {
 
 <style>
 body {
-  padding-left: 300px;
-  padding-top: 100px;
+  /* padding-left: 10%;
+  padding-top: 10%;
+  padding-right:10%; */
+  padding: 5%;
+  float: initial;
   color: black;
   background: url("https://img.wallpapersafari.com/desktop/1920/1080/7/5/xqilPm.png");
   font: 600 16px/18px "Open Sans", sans-serif;
