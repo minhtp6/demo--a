@@ -55,6 +55,8 @@ export default {
                 vm.$session.start();
                 vm.$session.set('jwt', response.status)
                    vm.$router.replace({name: 'Home'});
+                }else{
+                    sweetalert("Error!", "Can Not Connect To Server!", "error");
                 }
             }).catch(function (a){console.error(a);}).finally(() => {this.$loading(false)})          
     }}
