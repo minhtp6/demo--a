@@ -1,68 +1,66 @@
 <template>
-  
-      <div>   
-              <label><h3>Title: </h3></label>
-              <input v-model="titleText" type="text" maxlength="50" />
-              <label><h3>Project: </h3></label>
-              <input v-model="projectText" type="text" maxlength="50" />
-              <br>
-              <button style="color: green"  v-on:click="sendForm()">Create</button>
-              <br>
-              <button style="color: red"  v-on:click="closeForm">Close</button>
-           
-      </div>
-    
+  <div>
+    <label><h3>Title:</h3></label>
+    <input v-model="titleText" type="text" maxlength="50" />
+    <label><h3>Project:</h3></label>
+    <input v-model="projectText" type="text" maxlength="50" />
+    <br />
+    <button style="color: green" v-on:click="sendForm()">Create</button>
+    <br />
+    <button style="color: red" v-on:click="closeForm">Close</button>
+  </div>
 </template>
 
 <script>
-import sweetalert from 'sweetalert';
-import axios from 'axios';
+import sweetalert from "sweetalert";
+import axios from "axios";
 
 export default {
-  props:['todos'],
+  props: ["todos"],
   data() {
     return {
       titleText: "",
       projectText: "",
       isCreating: false,
-      
     };
   },
   methods: {
     closeForm() {
-      this.$modal.hideAll()
+      this.$modal.hideAll();
     },
     sendForm() {
-      let vm= this
+      let vm = this;
       if (this.titleText.length == 0 || this.projectText.length == 0) {
         sweetalert("Error!", "Title and project can't be empty!!!", "error");
-      }
-      else{
-        vm.$loading(true)
+      } else {
+        vm.$loading(true);
         const title = this.titleText;
         const project = this.projectText;
         this.titleText = "";
         this.projectText = "";
         vm.$modal.hideAll();
-         axios.post('https://60c2b23a917002001739d615.mockapi.io/todos',{
-           title,
-           project,
-           done:false,
-         }).then(function (response){
-        if(response.status == 201){
-          vm.todos.push({
-           title,
-           project,
-           done:false,
-         });
-          
-          sweetalert('Success!', 'To-Do created!', 'success');
-          
-        }
-        else{
-          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
-        }
-      }).finally(() => {this.$loading(false)});
+        axios
+          .post("https://60c2b23a917002001739d615.mockapi.io/todos", {
+            title,
+            project,
+            done: false,
+          })
+          .then(function (response) {
+            if (response.status == 201) {
+              vm.todos.push({
+                title,
+                project,
+                done: false,
+              });
+
+              sweetalert("Success!", "To-Do created!", "success");
+            } else {
+              sweetalert("Failed!", "Can Not Connect To Server!", "error");
+            }
+          })
+          .finally(() => {
+            this.$loading(false);
+          });
       }
     },
   },
@@ -70,23 +68,22 @@ export default {
 </script>
 
 <style scoped module>
-div{
+div {
   padding-top: 30px;
   padding-left: 225px;
   margin: auto;
 }
-button{
+button {
   padding-left: 225px;
   margin: auto;
   margin-top: 5px;
-  background-color:skyblue;
+  background-color: skyblue;
   padding-top: 10px;
   padding: 10px 15px;
   border: none;
   cursor: pointer;
   width: 175px;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   opacity: 0.8;
 }
-
 </style>

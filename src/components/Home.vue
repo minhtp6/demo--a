@@ -28,15 +28,14 @@ export default {
     };
   },
   mounted() {
-    let vm =this
+    let vm = this;
     axios
       .get("https://60c2b23a917002001739d615.mockapi.io/todos")
       .then(function (reponse) {
         if (reponse.status == 200) {
           vm.todos = reponse.data;
-        }
-        else{
-          sweetalert('Failed!', 'Can Not Connect To Server!', 'error');
+        } else {
+          sweetalert("Failed!", "Can Not Connect To Server!", "error");
         }
       });
   },

@@ -1,34 +1,31 @@
 <template>
   <div style="overflow-x: auto">
-    
-      <tr>
-        <td scope="col" width="400px">
-          {{ todo.title }}
-        </td>
-        <td scope="col" width="400px">
-          {{ todo.project }}
-        </td>
-        <td scope="col" width="100px">
-          <button v-show="todo.done" style="color: green" disabled>Completed</button>
-          <button
-            v-on:click="completeTodo(todo)"
-            v-show="!todo.done"
-          >
-            Pending
-          </button>
-        </td>
-        <td scope="col" width="100px">
-          <button v-on:click="showEdit(todo)">
-            <i>Edit</i>
-          </button>
-        </td>
-        <td scope="col" width="100px">
-          <button v-on:click="deleteTodo(todo)">
-            <i>Delete</i>
-          </button>
-        </td>
-      </tr>
-
+    <tr>
+      <td scope="col" width="400px">
+        {{ todo.title }}
+      </td>
+      <td scope="col" width="400px">
+        {{ todo.project }}
+      </td>
+      <td scope="col" width="100px">
+        <button v-show="todo.done" style="color: green" disabled>
+          Completed
+        </button>
+        <button v-on:click="completeTodo(todo)" v-show="!todo.done">
+          Pending
+        </button>
+      </td>
+      <td scope="col" width="100px">
+        <button v-on:click="showEdit(todo)">
+          <i>Edit</i>
+        </button>
+      </td>
+      <td scope="col" width="100px">
+        <button v-on:click="deleteTodo(todo)">
+          <i>Delete</i>
+        </button>
+      </td>
+    </tr>
   </div>
 </template>
 
@@ -57,7 +54,7 @@ td {
   border: 1px dotted grey;
 }
 button {
-  text-align:center;
+  text-align: center;
   padding: 10px;
   width: 100px;
   border-radius: 10px;

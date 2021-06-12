@@ -12,7 +12,7 @@ Vue.use(Vuex)
 Vue.use(VModal, {
   dynamicDefaults: {
     clickToClose: false,
-    adaptive: true, 
+    adaptive: true,
   }
 })
 Vue.use(VueLoading)
