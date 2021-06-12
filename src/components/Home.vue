@@ -62,6 +62,7 @@ button {
   border: 0.5px dotted;
 }
 .logout{
-  float: right ;
+  float: right;
+  margin-right:26% ;
 }
 </style>

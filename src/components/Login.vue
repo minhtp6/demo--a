@@ -106,10 +106,7 @@ export default {
 
 <style>
 body {
-  /* padding-left: 10%;
-  padding-top: 10%;
-  padding-right:10%; */
-  padding: 5%;
+  padding: 10%;
   float: initial;
   color: black;
   background: url("https://img.wallpapersafari.com/desktop/1920/1080/7/5/xqilPm.png");
@@ -119,8 +116,8 @@ body {
 .login-box {
   width: 100%;
   margin: auto;
-  max-width: 1920px;
-  min-height: 700px;
+  max-width: 75%;
+  min-height: 40%;
   position: relative;
   background: white;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
@@ -131,8 +128,7 @@ body {
 .login-snip {
   width: 100%;
   height: 100%;
-  position: absolute;
-  padding: 90px 70px 50px 70px;
+  padding: 10%;
   background: lightblue;
 }
 
